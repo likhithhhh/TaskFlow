@@ -7,6 +7,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('user');
   const [errors, setErrors] = useState({});
   const { register, token } = useAuth();
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Register = () => {
     }
 
     setErrors({});
-    const result = await register(username, email, password);
+    const result = await register(username, email, password, role);
     if (result.success && result.autoLoggedIn) {
       navigate('/dashboard');
     } else if (result.success) {
@@ -141,6 +142,21 @@ const Register = () => {
               {errors.confirmPassword && (
                 <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
               )}
+            </div>
+
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
+                Role
+              </label>
+              <select
+                id="role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition bg-white"
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
 
             <button

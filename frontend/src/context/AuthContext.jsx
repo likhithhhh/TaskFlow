@@ -52,12 +52,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (username, email, password) => {
+  const register = async (username, email, password, role = 'user') => {
     try {
       const response = await axiosInstance.post('/auth/register', {
         username,
         email,
         password,
+        role,
       });
       
       // Automatically log in the user after successful registration
