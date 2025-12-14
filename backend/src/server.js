@@ -14,11 +14,13 @@ const app = express();
 connectDB();
 
 // Middleware
+// backend/src/server.js
+
 app.use(cors({
-  // Allow BOTH your local laptop AND your live Vercel site
   origin: [
-    "http://localhost:5173", 
-    "https://task-flow-three-gray.vercel.app/" // Your Vercel URL
+    "http://localhost:5173",
+    "https://task-flow-three-gray.vercel.app",  // Your Main Production Link (No slash!)
+    "https://task-flow-krm22zbjb-likhith-chappatis-projects.vercel.app" // Your Current Preview Link (No slash!)
   ],
   credentials: true
 }));
