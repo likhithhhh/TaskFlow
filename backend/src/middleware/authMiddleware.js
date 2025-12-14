@@ -26,4 +26,14 @@ const adminOnly = (req, res, next) => {
   }
 };
 
-module.exports = { protect, adminOnly };
+// 3. Admin Guard Middleware (alias with different name as requested)
+const adminGuard = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied. Admin access required.' });
+  }
+};
+
+// Export verifyToken (protect) and adminGuard as requested
+module.exports = { protect, adminOnly, adminGuard, verifyToken: protect };
