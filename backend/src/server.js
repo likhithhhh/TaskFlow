@@ -14,7 +14,14 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  // Allow BOTH your local laptop AND your live Vercel site
+  origin: [
+    "http://localhost:5173", 
+    "https://task-flow-25y14my51-likhith-chappatis-projects.vercel.app" // Your Vercel URL
+  ],
+  credentials: true
+}));
 app.use(express.json()); // Parses JSON bodies
 
 // Route Middlewares
