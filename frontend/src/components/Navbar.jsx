@@ -16,10 +16,8 @@ const Navbar = () => {
   ];
 
   const handleSmoothScroll = (e, href) => {
-    // Only handle smooth scroll if we're on the landing page
     if (location.pathname !== '/') {
       navigate('/');
-      // Wait a bit for navigation, then scroll
       setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
@@ -33,7 +31,7 @@ const Navbar = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMenuOpen(false); // Close mobile menu
+      setIsMenuOpen(false); 
     }
   };
 
@@ -51,7 +49,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
@@ -88,7 +86,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+          
           <button
             className="md:hidden p-2 rounded-xl text-gray-700 hover:bg-gray-100 transition"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -97,7 +95,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-3 border-t border-gray-200">
             {navLinks.map((link) => (

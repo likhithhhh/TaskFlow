@@ -82,7 +82,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     toast.success('Logged out successfully');
-    // Redirect will be handled by the component using navigate
     return true;
   };
 

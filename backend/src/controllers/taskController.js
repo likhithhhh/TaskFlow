@@ -8,7 +8,7 @@ exports.createTask = async (req, res) => {
       title,
       description,
       status,
-      userId: req.user.id // Associate task with logged-in user
+      userId: req.user.id 
     });
     await task.save();
     res.status(201).json(task);
@@ -17,11 +17,9 @@ exports.createTask = async (req, res) => {
   }
 };
 
-// Get Tasks (RBAC Logic) [cite: 12]
 exports.getTasks = async (req, res) => {
   try {
     let tasks;
-    // If Admin, fetch ALL tasks. If User, fetch only THEIR tasks.
     if (req.user.role === 'admin') {
       tasks = await Task.find().populate('userId', 'username email');
     } else {
@@ -39,7 +37,6 @@ exports.updateTask = async (req, res) => {
     const task = await Task.findById(req.params.id);
     if (!task) return res.status(404).json({ message: 'Task not found' });
 
-    // Ensure user owns the task or is admin
     if (task.userId.toString() !== req.user.id && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Not authorized' });
     }
@@ -57,7 +54,6 @@ exports.deleteTask = async (req, res) => {
     const task = await Task.findById(req.params.id);
     if (!task) return res.status(404).json({ message: 'Task not found' });
 
-    // Ensure user owns the task or is admin
     if (task.userId.toString() !== req.user.id && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Not authorized' });
     }

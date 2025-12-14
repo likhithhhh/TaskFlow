@@ -11,7 +11,6 @@ exports.register = async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: 'User already exists' });
 
-    // Hash password [cite: 11]
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -20,7 +19,7 @@ exports.register = async (req, res) => {
       username,
       email,
       password: hashedPassword,
-      role: role || 'user' // Default to user if not specified
+      role: role || 'user' 
     });
 
     await user.save();
@@ -39,11 +38,9 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'Invalid credentials' });
 
-    // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-    // Generate JWT [cite: 11]
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,

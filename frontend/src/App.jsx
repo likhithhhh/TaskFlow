@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
   return token ? children : <Navigate to="/login" replace />;
 };
 
-// Public Route Component (only for login/register - doesn't redirect if logged in)
+// Public Route Component 
 const PublicAuthRoute = ({ children }) => {
   const { token, loading } = useAuth();
 
