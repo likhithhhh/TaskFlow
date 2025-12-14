@@ -18,7 +18,7 @@ app.use(cors({
   // Allow BOTH your local laptop AND your live Vercel site
   origin: [
     "http://localhost:5173", 
-    "https://task-flow-25y14my51-likhith-chappatis-projects.vercel.app" // Your Vercel URL
+    "https://task-flow-three-gray.vercel.app/" // Your Vercel URL
   ],
   credentials: true
 }));
