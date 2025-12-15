@@ -63,3 +63,8 @@ cd frontend
 npm install
 npm run dev
 \`\`\`
+
+
+## API Documentation
+- **File:** `taskflow_api.json` (Included in this repository)
+- **Instructions:** Import this file into Postman to test all endpoints immediately.
