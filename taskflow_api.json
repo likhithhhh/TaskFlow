@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "b3e34c2a-1234-5678-9abc-def123456789",
+		"name": "TaskFlow API Documentation",
+		"description": "API Documentation for TaskFlow MERN Stack Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"newuser\",\n    \"email\": \"user@test.com\",\n    \"password\": \"123456\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://taskflow-backend-253z.onrender.com/api/auth/register",
+							"protocol": "https",
+							"host": ["taskflow-backend-253z", "onrender", "com"],
+							"path": ["api", "auth", "register"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@test.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://taskflow-backend-253z.onrender.com/api/auth/login",
+							"protocol": "https",
+							"host": ["taskflow-backend-253z", "onrender", "com"],
+							"path": ["api", "auth", "login"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks (Protected)",
+			"item": [
+				{
+					"name": "Get All Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_TOKEN_HERE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://taskflow-backend-253z.onrender.com/api/tasks",
+							"protocol": "https",
+							"host": ["taskflow-backend-253z", "onrender", "com"],
+							"path": ["api", "tasks"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_TOKEN_HERE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Complete Assignment\",\n    \"description\": \"Finish the MERN stack backend task\",\n    \"status\": \"pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://taskflow-backend-253z.onrender.com/api/tasks",
+							"protocol": "https",
+							"host": ["taskflow-backend-253z", "onrender", "com"],
+							"path": ["api", "tasks"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Only",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ADMIN_TOKEN_HERE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://taskflow-backend-253z.onrender.com/api/admin/users",
+							"protocol": "https",
+							"host": ["taskflow-backend-253z", "onrender", "com"],
+							"path": ["api", "admin", "users"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
