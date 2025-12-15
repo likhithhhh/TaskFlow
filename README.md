@@ -17,6 +17,30 @@ Built as part of the Backend Developer Intern Assignment.
 - **RBAC:** Admin can manage all tasks; Users can only manage their own.
 - **Scalability:** Codebase structured for modularity (Controllers, Routes, Services).
 
+
+##  API Endpoints
+
+###  Authentication
+| Method | Endpoint             | Description |
+| :---   | :---                 | :--- |
+| `POST` | `/api/auth/register` | Register a new user (or Admin) |
+| `POST` | `/api/auth/login`    | Login and receive JWT token |
+
+###  Tasks (Protected)
+| Method   | Endpoint         | Description |
+| :---     | :---             | :--- |
+| `GET`    | `/api/tasks`     | Get all tasks for the logged-in user |
+| `POST`   | `/api/tasks`     | Create a new task |
+| `PUT`    | `/api/tasks/:id` | Update a specific task |
+| `DELETE` | `/api/tasks/:id` | Delete a specific task |
+
+###  Admin (RBAC)
+| Method | Endpoint           | Description |
+| :---   | :---               | :--- |
+| `GET`  | `/api/admin/users` | View all registered users (Admin only) |
+
+
+
 ##  How to Run Locally
 
 ### 1. Clone the Repo
